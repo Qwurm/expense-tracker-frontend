@@ -1,7 +1,10 @@
-import React from 'react';
-import './transaction-entry.scss'
+import React, {useContext} from 'react';
+import './transaction-entry.scss';
+
+import { GlobalContext } from '../../context/GlobalState';
 
 const TransactionEntry = ({transactionData}) => {
+    const { removeTransaction } = useContext(GlobalContext)
     const sign = (transactionData.amount < 0) ? ('-') : ('+');
 
     return (
@@ -9,10 +12,14 @@ const TransactionEntry = ({transactionData}) => {
             <li className={(transactionData.amount < 0) ? 'negative' : 'positive'}>
                 {transactionData.text}
                 <span>{sign}${Math.abs(transactionData.amount)}</span>
-                <button className="delete-entry-button">X</button>
+                <button 
+                    className="delete-entry-button"
+                    onClick={() => removeTransaction(transactionData.id)}
+                    >
+                    X
+                </button>
             </li>
         </div>
-        
     )
 }
 

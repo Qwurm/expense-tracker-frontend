@@ -10,11 +10,17 @@ const initialState = {
 // AppReducer
 const AppReducer = (state, action) => {
     switch(action.type) {
-        
+        case 'REMOVE_TRANSACTION':
+            return {
+                ...state,
+                transactions: state.transactions.filter(transaction => transaction.id !== action.payload)
+            }
         default:
             return state;
     }
 }
+
+
 
 // Context
 export const GlobalContext = createContext(initialState)
@@ -23,11 +29,19 @@ export const GlobalContext = createContext(initialState)
 export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
 
+    const removeTransaction = (id) => {
+        dispatch({
+            type: 'REMOVE_TRANSACTION',
+            payload: id
+        })
+    }
+
     return (
-    <GlobalContext.Provider value={{
-        transactions:state.transactions
-    }}>
-        {children}
-    </GlobalContext.Provider>
+        <GlobalContext.Provider value={{
+            transactions:state.transactions,
+            removeTransaction
+        }}>
+            {children}
+        </GlobalContext.Provider>
     )
 }
