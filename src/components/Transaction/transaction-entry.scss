@@ -1,0 +1,45 @@
+.transaction-entry-wrapper {
+    background-color: #0FF;
+    box-shadow: var(--box-shadow);
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 10px;
+    margin: 10px 0;
+    width:350px;
+
+    .positive {
+        border-right: 5px solid #2ecc71;
+    }
+
+    .negative {
+        border-right: 5xp solid #c0392b;
+    }
+
+    .delete-entry-button {
+        cursor: pointer;
+        background-color: #e74c3c;
+        border: 0;
+        color: #fff;
+        font-size: 20px;
+        line-height: 20px;
+        padding: 2px 5px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(-100%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+        .delete-entry-button {
+            opacity:1;
+        }
+    }
+
+    span {
+        font-weight:700;
+    }
+}
