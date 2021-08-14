@@ -8,8 +8,8 @@ const ExpenseTracker = () => {
     return (
         <div className="container">
             <Balance/>
-            <TransactionHistory/>
             <TransactionTotals/>
+            <TransactionHistory/>
         </div>
     )
 }

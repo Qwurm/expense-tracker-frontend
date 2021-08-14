@@ -7,6 +7,7 @@ const App = () => {
   return (
     <GlobalProvider>
       <div className="App">
+        <h1>David's Expense Tracker</h1>
         <ExpenseTracker/>
       </div>
     </GlobalProvider>

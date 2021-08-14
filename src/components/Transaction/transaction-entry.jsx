@@ -9,6 +9,7 @@ const TransactionEntry = ({transactionData}) => {
             <li className={(transactionData.amount < 0) ? 'negative' : 'positive'}>
                 {transactionData.text}
                 <span>{sign}${Math.abs(transactionData.amount)}</span>
+                <button className="delete-entry-button">X</button>
             </li>
         </div>
         
