@@ -6,7 +6,7 @@ import TransactionTotals from '../../components/TransactionTotals/transaction-to
 const ExpenseTracker = () => {
 
     return (
-        <div>
+        <div className="container">
             <Balance/>
             <TransactionHistory/>
             <TransactionTotals/>
