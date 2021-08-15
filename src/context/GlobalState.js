@@ -10,6 +10,11 @@ const initialState = {
 // AppReducer
 const AppReducer = (state, action) => {
     switch(action.type) {
+        case 'ADD_TRANSACTION':
+            return {
+                ...state,
+                transactions: [action.payload,...state.transactions]
+            }
         case 'REMOVE_TRANSACTION':
             return {
                 ...state,
@@ -36,10 +41,18 @@ export const GlobalProvider = ({ children }) => {
         })
     }
 
+    const addTransaction = (transaction) => {
+        dispatch({
+            type:'ADD_TRANSACTION',
+            payload: transaction
+        })
+    }
+
     return (
         <GlobalContext.Provider value={{
             transactions:state.transactions,
-            removeTransaction
+            removeTransaction,
+            addTransaction
         }}>
             {children}
         </GlobalContext.Provider>
